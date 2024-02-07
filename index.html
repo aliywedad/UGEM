@@ -25,9 +25,14 @@
         <label for="student_num">أدخل رقم التسجيل للبحث :</label><br>
         <input type="text" id="student_num" name="student_num">
         <button onclick="getStudentResults()">بحث</button>
-        <div id="table-container"></div>
     </center>
-<br>
+    <br>
+    <center><h2><div id="nom"></div></h2></center>
+
+
+    <br>
+    <div id="table-container"></div>
+
     <script src="js.js"></script> <!-- Include the external JavaScript file -->
     <script>
         function getStudentResults() {
@@ -38,11 +43,11 @@
 
             if (filteredData.length > 0) {
                 var tableHtml = "<table>";
-                tableHtml += "<tr><th>Name</th><th>العنصر</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>درجة الإستدراك</th><th>المعدل</th><th>القرار</th></tr>";
+                tableHtml += "<tr><th>العنصر</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>درجة الإستدراك</th><th>المعدل</th><th>القرار</th></tr>";
                 
                 filteredData.forEach(function(student) {
                     tableHtml += "<tr>";
-                    tableHtml += "<td>" + student.name + "</td>";
+                    document.getElementById("nom").innerHTML = student.name;
                     tableHtml += "<td>" + student.mat + "</td>";
                     tableHtml += "<td>" + student.exam + "</td>";
                     tableHtml += "<td>" + student.test + "</td>";
