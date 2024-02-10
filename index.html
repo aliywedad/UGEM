@@ -19,7 +19,14 @@
         th {
             background-color: #f2f2f2;
         }
-
+        #nom {
+            background-color: #ff6a00;
+            width: fit-content;
+            border-radius: 10px;
+            border: none;
+            padding: 1px 5px;
+            color: white;
+        }
 
         /* Desktop styles */
         @media (min-width: 768px) {
@@ -56,7 +63,7 @@
     <center>
         <h1>نتائج الطلاب</h1>
         <label for="student_num">أدخل رقم التسجيل:</label><br>
-        <input type="text" id="student_num"  name="student_num">
+        <input type="text" id="student_num" name="student_num">
         <button onclick="getStudentResults()">بحث</button>
         <br>
         <select id="S">
