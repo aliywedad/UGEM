@@ -5,63 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Results</title>
     <style>
+        /* Common styles */
         table {
-            border-collapse: collapse;
             width: 100%;
+            text-align: center;
+            border-collapse: collapse;
         }
         th, td {
-            border: 1px solid black;
             padding: 8px;
             text-align: center;
+            border: 1px solid black;
         }
         th {
             background-color: #f2f2f2;
+        }
+        #nom {
+            background-color: #ff6a00;
+            width: fit-content;
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            table {
+                width: 50%;
+            }
+            th {
+                border-right: 1px solid black;
+                border-left: 1px solid black;
+            }
+            #table-container {
+                width: fit-content;
+            }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                font-size: 14px;
+            }
+            #table-container {
+                overflow-x: auto;
+            }
         }
     </style>
 </head>
 <body>
     <center>
-        <h1>نتائج الطلاب </h1>
-        <label for="student_num">أدخل رقم التسجيل للبحث :</label><br>
-        <input type="text" id="student_num" name="student_num">
+        <h1>نتائج الطلاب</h1>
+        <label for="student_num">أدخل رقم التسجيل:</label><br>
+        <input type="text" id="student_num" value='18772' name="student_num">
         <button onclick="getStudentResults()">بحث</button>
+        <br>
+        <select id="S">
+            <option value="S1" selected>السداسي</option>
+            <option value="S1">س1</option>
+            <option value="S3">س3</option>
+            <option value="S5">س5</option>
+        </select>
     </center>
     <br>
-    <center><h2><div id="nom"></div></h2></center>
-
-
+    <center>
+        <h3><div id="nom"></div></h3>
+    </center>
     <br>
-    <div id="table-container"></div>
+    <center>
+        <div id="table-container"></div>
+    </center>
 
-    <script src="js.js"></script> <!-- Include the external JavaScript file -->
+    <script src="S1.js"></script> <!-- Include the external JavaScript file -->
+    <script src="S3.js"></script> <!-- Include the external JavaScript file -->
+    <script src="S5.js"></script> <!-- Include the external JavaScript file -->
     <script>
         function getStudentResults() {
             var studentNum = document.getElementById("student_num").value;
-            var filteredData = data.filter(function(student) {
-                return student.num == studentNum;
-            });
+            var semestr = document.getElementById("S").value;
+            var filteredData = [];
+
+            if (semestr === 'S1') {
+                filteredData = S1.filter(function(student) { 
+                    return student.num == studentNum;
+                });
+            } else if (semestr === 'S3') {
+                filteredData = S3.filter(function(student) { 
+                    return student.num == studentNum;
+                });
+            } else if (semestr === 'S5') {
+                filteredData = S5.filter(function(student) { 
+                    return student.num == studentNum;
+                });
+            }
 
             if (filteredData.length > 0) {
                 var tableHtml = "<table>";
-                tableHtml += "<tr><th>العنصر</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>درجة الإستدراك</th><th>المعدل</th><th>القرار</th></tr>";
+                tableHtml += "<thead><tr><th>العنصر</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>درجة الإستدراك</th><th>المعدل</th><th>القرار</th></tr>";
                 
                 filteredData.forEach(function(student) {
-                    tableHtml += "<tr>";
-                    document.getElementById("nom").innerHTML = student.name;
+                    tableHtml += "<tr class='h'>";
+                    if (semestr === 'S3')
+                        document.getElementById("nom").innerHTML ="<p style='background-color: #ff6a00;width: fit-content;border-radius: 10px;border: none;color:white;'>"+ student.name+" , "+"السنة الثانية ليصانص</p>";
+                    if (semestr === 'S1')
+                        document.getElementById("nom").innerHTML = "<p style='background-color: #ff6a00;width: fit-content;border-radius: 10px;border: none;color:white;'>"+student.name+" , "+"السنة  الؤولى ليصانص</p>";
+                    if (semestr === 'S5')
+                        document.getElementById("nom").innerHTML = "<p style='background-color: #ff6a00;width: fit-content;border-radius: 10px;border: none;color:white;'>"+student.name+" , "+"السنة الثالثة ليصانص</p>";
                     tableHtml += "<td>" + student.mat + "</td>";
                     tableHtml += "<td>" + student.exam + "</td>";
                     tableHtml += "<td>" + student.test + "</td>";
                     tableHtml += "<td>" + student.note_istidrak + "</td>";
                     tableHtml += "<td>" + student.moy + "</td>";
                     tableHtml += "<td>" + student.dec +"</td>";
-
                     tableHtml += "</tr>";
                 });
-                tableHtml += "</table>";
+                tableHtml += "</tbody></table>";
 
                 document.getElementById("table-container").innerHTML = tableHtml;
             } else {
-                console.log("No student found with the given number.");
+                document.getElementById("nom").innerHTML = "هذا الرقم غير موجود !";
+                document.getElementById("table-container").innerHTML = ""; // Clear the table
             }
         }
     </script>
