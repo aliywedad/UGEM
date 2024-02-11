@@ -63,7 +63,7 @@
     <center>
         <h1>نتائج الطلاب</h1>
         <label for="student_num">أدخل رقم التسجيل:</label><br>
-        <input type="text" id="student_num"  name="student_num">
+        <input type="text" id="student_num"value="18772"  name="student_num">
         <button onclick="getStudentResults()">بحث</button>
         <br>
         <select id="S">
@@ -106,7 +106,7 @@
 
             if (filteredData.length > 0) {
                 var tableHtml = "<table>";
-                tableHtml += "<thead><tr><th>العنصر</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>درجة الإستدراك</th><th>المعدل</th><th>القرار</th></tr>";
+                tableHtml += "<thead><th>القرار</th><th>المعدل</th><th>درجة الإستدراك</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>المادة</th></tr>";
                 
                 filteredData.forEach(function(student) {
                     tableHtml += "<tr class='h'>";
@@ -116,12 +116,12 @@
                         document.getElementById("nom").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>"+student.name+" , "+"السنة  الؤولى ليصانص</p>";
                     if (semestr === 'S5')
                         document.getElementById("nom").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>"+student.name+" , "+"السنة الثالثة ليصانص</p>";
-                    tableHtml += "<td>" + student.mat + "</td>";
+                    tableHtml += "<td>" + student.dec +"</td>";
+                    tableHtml += "<td>" + student.moy + "</td>";
+                    tableHtml += "<td>" + student.note_istidrak + "</td>";
                     tableHtml += "<td>" + student.exam + "</td>";
                     tableHtml += "<td>" + student.test + "</td>";
-                    tableHtml += "<td>" + student.note_istidrak + "</td>";
-                    tableHtml += "<td>" + student.moy + "</td>";
-                    tableHtml += "<td>" + student.dec +"</td>";
+                    tableHtml += "<td>" + student.mat + "</td>";
                     tableHtml += "</tr>";
                 });
                 tableHtml += "</tbody></table>";
