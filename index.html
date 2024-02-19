@@ -126,14 +126,17 @@
                     tableHtml += "<td>" + student.test + "</td>";
                     tableHtml += "<td>" + student.coef + "</td>";
                     tableHtml += "<td>" + student.mat + "</td>";
-                    somm+=student.moy*student.coef
-                    somm_c+=student.coef
+                    somm+=parseFloat( student.moy)*parseFloat(student.coef)
+
+                    somm_c+=parseFloat( student.coef)
                     tableHtml += "</tr>";
                 });
                 tableHtml += "</tbody></table>";
 
                 document.getElementById("table-container").innerHTML = tableHtml;
                 const M = somm / somm_c;
+                console.log(somm)
+                console.log(somm_c)
                 const result = M.toFixed(2);
                 document.getElementById("moy1").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'> المعدل العام  للفصل : "+result+"</p>";
                 document.getElementById("des1").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>:القرا النهائي للفصل </p>";
