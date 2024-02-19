@@ -113,7 +113,7 @@
                     if (semestr === 'S3')
                         document.getElementById("nom").innerHTML ="<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>"+ student.name+" , "+"السنة الثانية ليصانص</p>";
                     if (semestr === 'S1')
-                        document.getElementById("nom").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>"+student.name+" , "+"السنة  الؤولى ليصانص</p>";
+                    document.getElementById("nom").innerHTML ="<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>" + student.name+" ,"+"  السنة الثانية ليصانص  تخصص : "+student.dep+" </p>";
                     if (semestr === 'S5')
                         document.getElementById("nom").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>"+student.name+" , "+"السنة الثالثة ليصانص</p>";
                     tableHtml += "<td>" + student.dec +"</td>";
@@ -129,6 +129,8 @@
                 document.getElementById("table-container").innerHTML = tableHtml;
             } else {
                 document.getElementById("nom").innerHTML = "هذا الرقم غير موجود !";
+                document.getElementById("nom").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>هذا الرقم غير موجود !</p>";
+
                 document.getElementById("table-container").innerHTML = ""; // Clear the table
             }
         }
