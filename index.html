@@ -64,7 +64,7 @@
         <img src="UGEM.jpg"style="width: 50%;height: 50%;">
         <h1>نتائج الطلاب</h1>
         <label for="student_num">أدخل رقم التسجيل:</label><br>
-        <input type="text" id="student_num"  name="student_num">
+        <input type="text" id="student_num" required name="student_num">
         <button onclick="getStudentResults()">بحث</button>
         <br>
         <select id="S">
@@ -109,7 +109,7 @@
                 var somm=0;
                 var somm_c=0;
                 var tableHtml = "<table>";
-                tableHtml += "<thead><th>القرار</th><th>المعدل</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>المادة</th></tr>";
+                tableHtml += "<thead><th>القرار</th><th>المعدل</th><th>درجة الإمتحان</th><th>درجة الإختبار</th><th>الضارب</th><th>المادة</th></tr>";
                 
                 filteredData.forEach(function(student) {
 
@@ -124,6 +124,7 @@
                     tableHtml += "<td>" + student.moy + "</td>";
                     tableHtml += "<td>" + student.exam + "</td>";
                     tableHtml += "<td>" + student.test + "</td>";
+                    tableHtml += "<td>" + student.coef + "</td>";
                     tableHtml += "<td>" + student.mat + "</td>";
                     somm+=student.moy*student.coef
                     somm_c+=student.coef
@@ -138,10 +139,14 @@
                 document.getElementById("des1").innerHTML = ":القرا النهائي للفصل ";
 
                 if (result>=10){document.getElementById("des2").innerHTML = " استوفى ";
+                document.getElementById("des3").innerHTML = "    الاتحاد العام للطلاب الموريتانيين   يهنئك على الإجتياز UGEM";
 
 
             }
-                else document.getElementById("des2").innerHTML = " لم يستوفي "
+            else {document.getElementById("des2").innerHTML = " لم يستوفي ";
+            document.getElementById("des3").innerHTML = " الاتحاد العام للطلاب الموريتانيين  يتمنى لك التوفيق في الاستدراك  UGEM";
+
+        }
 
 
             } else {
@@ -166,6 +171,7 @@
         <h3><div id="moy2"></div></h3>
         <h3><div id="des1"></div></h3>
         <h3><div id="des2"></div></h3>
+        <h3><div id="des3"></div></h3>
     </center>
 </body>
 </html>
