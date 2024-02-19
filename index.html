@@ -135,10 +135,10 @@
                 document.getElementById("table-container").innerHTML = tableHtml;
                 const M = somm / somm_c;
                 const result = M.toFixed(2);
-                document.getElementById("moy1").innerHTML = " المعدل العام  للفصل : "+result;
-                document.getElementById("des1").innerHTML = ":القرا النهائي للفصل ";
+                document.getElementById("moy1").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'> المعدل العام  للفصل : "+result+"</p>";
+                document.getElementById("des1").innerHTML = "<p style='background-color: #fa8304;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'>:القرا النهائي للفصل </p>";
 
-                if (result>=10){document.getElementById("des2").innerHTML = " استوفى ";
+                if (result>=10){document.getElementById("des2").innerHTML = " <img src='right.jpg'style='width: 10%;height: 10%;margin-left: 10%;'><span style='background-color: #00FF00;width: fit-content;border: none;color:white;padding:5px 10px;border-radius: 7px;'> استوفى </span><img src='left.jpg'style='width: 10%;height: 10%;margin-right: 10%;'>";
                 document.getElementById("des3").innerHTML = "    الاتحاد العام للطلاب الموريتانيين   يهنئك على الإجتياز UGEM";
 
 
@@ -167,8 +167,8 @@
     </div>
     </center>
     <center>
-        <h3><div id="moy1"></div></h3>
-        <h3><div id="moy2"></div></h3>
+        <h3><div id="moy1"></div>
+        <div id="moy2"></div></h3>
         <h3><div id="des1"></div></h3>
         <h3><div id="des2"></div></h3>
         <h3><div id="des3"></div></h3>
